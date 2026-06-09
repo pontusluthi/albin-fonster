@@ -104,6 +104,7 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+  height: 600px
 }
 
 .Hero h1 {
@@ -180,7 +181,7 @@ body {
   padding: 3rem 2rem;
   flex: 1;
   min-width: 280px;
-  box-shadow: 0 10px 30px rgb(140, 190, 255);
+  box-shadow: 0 10px 30px rgb(163, 214, 255);
   text-align: center;
   position: relative;
   transition: all 0.3s ease;
@@ -189,7 +190,7 @@ body {
 
 .Card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgb(97, 148, 216);
+  box-shadow: 0 20px 40px rgb(160, 201, 255);
 }
 
 .Card h3 {
