@@ -53,7 +53,7 @@ function App() {
           <h1 className="Header-title">Albins Fönsterputs</h1>
         </div>
         <div className="Navbar-actions">
-          <a href="#contact" className="Button">Boka nu</a>
+          <a href="#contact" className="Boka-btn">Boka nu</a>
         </div>
       </nav>
 
@@ -66,7 +66,7 @@ function App() {
           Jag erbjuder professionell, noggrann och personlig fönsterputsning 
           för privatpersoner och företag i Stockholmsområdet & Söderort.
         </p>
-        <a href="#calculator" className="Button">Prisberäkning</a>
+        <a href="#calculator" className="Pris-btn">Prisberäkning</a>
       </header>
 
       {/* Services Section */}
