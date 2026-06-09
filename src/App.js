@@ -131,7 +131,7 @@ function App() {
         <p className="About-desc">
           Som en lokal enmansföretagare värdesätter jag personlig service och hög kvalitet i allt jag gör. 
           När du anlitar Albins Fönsterputs vet du exakt vem som kommer till ditt hem. 
-          Jag är i tid, noggrann och lämnar alltid efter mig ett strålande resultat!
+          Jag är i tid, noggrann och lämnar alltid efter mig ett skinande resultat!
         </p>
       </section>
 
