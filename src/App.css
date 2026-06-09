@@ -1,9 +1,13 @@
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   /* Updated to Light Blue & Red theme */
   --primary-blue: #0f172a; /* Deep bold text color */
-  --light-blue: #76c8ff; /* Soft light blue */
-  --light-blue-gradient: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-  --accent-red: #ef4444; /* Clean modern red */
+  --light-blue: #3192e79a; /* Soft light blue */
+  --light-blue-gradient: linear-gradient(135deg, #e0f2fe 0%, #6cccff 100%);
+  --accent-red: #CE3627; /* Clean modern red */
   --accent-red-hover: #dc2626;
   --text-color: #334155;
   --bg-color: #f8fafc;
@@ -36,25 +40,6 @@ body {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-}
-
-.Logo-placeholder {
-  width: 55px;
-  height: 55px;
-  background: var(--light-blue-gradient);
-  color: var(--primary-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
-  border: 2px solid #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  font-weight: 800;
-  font-size: 0.75rem;
-  text-align: center;
-  line-height: 1.2;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .Header-title {
@@ -121,7 +106,7 @@ body {
 
 /* Sections */
 .Services, .About {
-  padding: 6rem 2rem;
+  padding: 2rem 2rem;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -148,7 +133,7 @@ body {
   padding: 3rem 2rem;
   flex: 1;
   min-width: 280px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px var(--light-blue);
   text-align: center;
   position: relative;
   transition: all 0.3s ease;
@@ -244,4 +229,247 @@ body {
   .Hero h1 { font-size: 2.5rem; }
   .Service-cards { flex-direction: column; }
   .Contact-info p { flex-direction: column; gap: 0.5rem; text-align: left; }
+}
+
+/* Calculator Section */
+
+.Calc-total-amount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem !important;
+}
+
+.Calc-total-before-rut {
+  font-size: 1.1rem;
+  color: #64748b;
+  margin-top: 0.5rem !important;
+}
+
+
+.Calculator {
+  background-color: var(--bg-color);
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.Calculator h2 {
+  color: var(--primary-blue);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.Calculator-desc {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.Calc-box {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(186, 230, 253, 0.5);
+  border-top: 5px solid var(--accent-red);
+}
+
+.Calc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.Calc-item:last-of-type {
+  border-bottom: none;
+}
+
+.Calc-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.Calc-name {
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.Calc-price {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.Calc-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Calc-btn {
+  background: var(--light-blue);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--primary-blue);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.Calc-btn:hover {
+  background: #4cc0ff;
+}
+
+.Calc-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  -moz-appearance: textfield;
+}
+
+.Calc-input::-webkit-outer-spin-button,
+.Calc-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Calc-total {
+  margin-top: 2rem;
+  background: var(--light-blue-gradient);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.Calc-total p {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary-blue);
+}
+
+.Calc-total-amount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem !important;
+}
+
+.Calc-rut {
+  color: #10b981; /* Green color for discount */
+  font-weight: 700;
+  font-size: 1.1rem !important;
+}
+
+.Calc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.Calc-item:last-of-type {
+  border-bottom: none;
+}
+
+.Calc-label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.Calc-name {
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.Calc-price {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.Calc-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Calc-btn {
+  background: var(--light-blue);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--primary-blue);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.Calc-btn:hover {
+  background: #bae6fd;
+}
+
+.Calc-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  -moz-appearance: textfield;
+}
+
+.Calc-input::-webkit-outer-spin-button,
+.Calc-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Calc-total {
+  margin-top: 2rem;
+  background: var(--light-blue-gradient);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.Calc-total p {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary-blue);
+}
+
+.Calc-rut {
+  color: #10b981; /* Green color for discount */
+  font-weight: 700;
+}
+
+.Brand-logo {
+  height: 65px;
+  width: auto;
+}
+
+.Brand-logo-big {
+  height: 300px;
+  width: auto;
 }

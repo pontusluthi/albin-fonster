@@ -1,16 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
+import logo from './image.png';
 import './App.css';
+import CalcItem from './CalcItem';
 
 function App() {
+  const [counts, setCounts] = useState({
+    enkU: 0,
+    enkM: 0,
+    dubU: 0,
+    dubM: 0,
+    stort: 0
+  });
+
+  const prices = {
+    enkU: 38,
+    enkM: 56,
+    dubU: 68,
+    dubM: 86,
+    stort: 76
+  };
+
+  const handleCalcChange = (type, value) => {
+    const val = parseInt(value) || 0;
+    setCounts(prev => ({ ...prev, [type]: Math.max(0, val) }));
+  };
+
+  const adjustCount = (type, delta) => {
+    setCounts(prev => ({ ...prev, [type]: Math.max(0, prev[type] + delta) }));
+  };
+
+  const totalPrice = 
+    counts.enkU * prices.enkU +
+    counts.enkM * prices.enkM +
+    counts.dubU * prices.dubU +
+    counts.dubM * prices.dubM +
+    counts.stort * prices.stort;
+
+  const priceAfterRut = totalPrice * 0.5;
+
   return (
     <div className="App">
       {/* Navigation */}
       <nav className="Navbar">
         <div className="Navbar-brand">
-          <div className="Logo-placeholder">
-            Logo<br/>Here
-          </div>
-          <h1 className="Header-title">Albins Fönstertvätt</h1>
+          <img src={logo} alt="Albins Fönsterputs Logo" className="Brand-logo" />
+          <h1 className="Header-title">Albins Fönsterputs</h1>
         </div>
         <div className="Navbar-actions">
           <a href="#contact" className="Button">Boka nu</a>
@@ -19,13 +53,14 @@ function App() {
 
       {/* Hero Section */}
       <header className="Hero">
-        <h1>Skinande rena fönster i Tullinge & Stockholm</h1>
+        <img src={logo} alt="Albins Fönsterputs Logo" className="Brand-logo-big" />
+        <h1>Albins Fönsterputs</h1>
         <p>
-          Hej! Jag heter Albin, är 23 år och driver Albins Fönstertvätt. 
+          Hej! Jag heter Albin, är 23 år och driver Albins Fönsterputs. 
           Jag erbjuder professionell, noggrann och personlig fönsterputsning 
           för privatpersoner och företag i Tullinge med omnejd.
         </p>
-        <a href="#contact" className="Button">Få en gratis offert</a>
+        <a href="#calculator" className="Button">Prisberäkning</a>
       </header>
 
       {/* Services Section */}
@@ -42,7 +77,26 @@ function App() {
           </div>
           <div className="Card">
             <h3>Tillval</h3>
-            <p>Karmtvätt, rengöring av spröjs och avtorkning av fönsterbleck ordnas självklart om så önskas.</p>
+            <p>Karmputs, rengöring av spröjs och avtorkning av fönsterbleck ordnas självklart om så önskas.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Calculator Section */}
+      <section className="Calculator" id="calculator">
+        <h2>Prisberäkning</h2>
+        <p className="Calculator-desc">Räkna ut ditt pris direkt. Ange antal fönster av varje typ nedan.</p>
+        
+        <div className="Calc-box">
+          <CalcItem name="Enkelsidigt (utan spröjs)" price={prices.enkU} count={counts.enkU} itemKey="enkU" onAdjust={adjustCount} onChange={handleCalcChange} />
+          <CalcItem name="Enkelsidigt (med spröjs)" price={prices.enkM} count={counts.enkM} itemKey="enkM" onAdjust={adjustCount} onChange={handleCalcChange} />
+          <CalcItem name="Dubbelsidigt (utan spröjs)" price={prices.dubU} count={counts.dubU} itemKey="dubU" onAdjust={adjustCount} onChange={handleCalcChange} />
+          <CalcItem name="Dubbelsidigt (med spröjs)" price={prices.dubM} count={counts.dubM} itemKey="dubM" onAdjust={adjustCount} onChange={handleCalcChange} />
+          <CalcItem name="Stort fönster" price={prices.stort} count={counts.stort} itemKey="stort" onAdjust={adjustCount} onChange={handleCalcChange} />
+
+          <div className="Calc-total">
+            <p className="Calc-total-amount">{priceAfterRut} kr</p>
+            <p className="Calc-total-before-rut">Totalt innan RUT: {totalPrice} kr</p>
           </div>
         </div>
       </section>
@@ -52,7 +106,7 @@ function App() {
         <h2>Varför välja mig?</h2>
         <p style={{textAlign: 'center', maxWidth: '750px', margin: '0 auto', lineHeight: '1.6'}}>
           Som en lokal enmansföretagare värdesätter jag personlig service och hög kvalitet i allt jag gör. 
-          När du anlitar Albins Fönstertvätt vet du exakt vem som kommer till ditt hem. 
+          När du anlitar Albins Fönsterputs vet du exakt vem som kommer till ditt hem. 
           Jag är i tid, noggrann och lämnar alltid efter mig ett strålande resultat!
         </p>
       </section>
@@ -65,11 +119,11 @@ function App() {
         <div className="Contact-info">
           <p>
             <span>📞 Telefon:</span> 
-            <a href="tel:0700000000">070-000 00 00</a>
+            <a href="tel:0720228998">072-022 89 98</a>
           </p>
           <p>
             <span>✉️ E-post:</span> 
-            <a href="mailto:info@albinsfonstertvatt.se">info@albinsfonstertvatt.se</a>
+            <a href="mailto:albinsfonsterputs@gmail.com">albinsfonsterputs@gmail.com</a>
           </p>
           <p>
             <span>📍 Omfattning:</span> 
@@ -80,7 +134,7 @@ function App() {
 
       {/* Footer */}
       <footer className="Footer">
-        <p>&copy; {new Date().getFullYear()} Albins Fönstertvätt. Alla rättigheter förbehållna.</p>
+        <p>&copy; {new Date().getFullYear()} Albins Fönsterputs. Alla rättigheter förbehållna.</p>
       </footer>
     </div>
   );
