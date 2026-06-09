@@ -12,12 +12,15 @@ function App() {
     stort: 0
   });
 
+  const [hasBleck, setHasBleck] = useState(null); // null = not selected, true/false = selected
+
   const prices = {
     enkU: 38,
     enkM: 56,
     dubU: 68,
     dubM: 86,
-    stort: 76
+    stort: 76,
+    bleck: 30
   };
 
   const handleCalcChange = (type, value) => {
@@ -29,14 +32,17 @@ function App() {
     setCounts(prev => ({ ...prev, [type]: Math.max(0, prev[type] + delta) }));
   };
 
+  const totalCount = Object.values(counts).reduce((sum, count) => sum + count, 0);
+
   const totalPrice = 
     counts.enkU * prices.enkU +
     counts.enkM * prices.enkM +
     counts.dubU * prices.dubU +
     counts.dubM * prices.dubM +
-    counts.stort * prices.stort;
+    counts.stort * prices.stort +
+    (hasBleck ? totalCount * prices.bleck : 0); // Add 30 kr per window if bleck is selected;
 
-  const priceAfterRut = totalPrice * 0.5;
+  const priceWithoutRut = totalPrice * 2;
 
   return (
     <div className="App">
@@ -75,10 +81,6 @@ function App() {
             <h3>Fönsterputsning (Företag)</h3>
             <p>Ett rent första intryck för dina kunder eller på kontoret. Hör av dig för ett skräddarsytt upplägg.</p>
           </div>
-          <div className="Card">
-            <h3>Tillval</h3>
-            <p>Karmputs, rengöring av spröjs och avtorkning av fönsterbleck ordnas självklart om så önskas.</p>
-          </div>
         </div>
       </section>
 
@@ -94,9 +96,31 @@ function App() {
           <CalcItem name="Dubbelsidigt (med spröjs)" price={prices.dubM} count={counts.dubM} itemKey="dubM" onAdjust={adjustCount} onChange={handleCalcChange} />
           <CalcItem name="Stort fönster" price={prices.stort} count={counts.stort} itemKey="stort" onAdjust={adjustCount} onChange={handleCalcChange} />
 
+          {/* Yes/No for Fönsterbleck*/}
+          <div className="Calc-item">
+            <div className="Calc-label">
+              <span className="Calc-name">Fönsterbleck & Fönsterkarmar</span>
+              <p className="Calc-price">+30 kr/st (efter RUT)</p>
+            </div>
+            <div className="Calc-controls">
+              <button 
+                className={`Calc-btn-bool ${hasBleck === true ? 'active' : 'inactive'}`} 
+                onClick={() => setHasBleck(true)}
+              >
+                Ja
+              </button>
+              <button 
+                className={`Calc-btn-bool ${hasBleck === false ? 'active' : 'inactive'}`} 
+                onClick={() => setHasBleck(false)}
+              >
+                Nej
+              </button>
+            </div>
+          </div>
+
           <div className="Calc-total">
-            <p className="Calc-total-amount">{priceAfterRut} kr</p>
-            <p className="Calc-total-before-rut">Totalt innan RUT: {totalPrice} kr</p>
+            <p className="Calc-total-amount">{totalPrice} kr</p>
+            <p className="Calc-total-before-rut">Totalt innan RUT: {priceWithoutRut} kr</p>
           </div>
         </div>
       </section>
@@ -104,7 +128,7 @@ function App() {
       {/* About Section */}
       <section className="About" id="about">
         <h2>Varför välja mig?</h2>
-        <p style={{textAlign: 'center', maxWidth: '750px', margin: '0 auto', lineHeight: '1.6'}}>
+        <p className="About-desc">
           Som en lokal enmansföretagare värdesätter jag personlig service och hög kvalitet i allt jag gör. 
           När du anlitar Albins Fönsterputs vet du exakt vem som kommer till ditt hem. 
           Jag är i tid, noggrann och lämnar alltid efter mig ett strålande resultat!
@@ -113,8 +137,7 @@ function App() {
 
       {/* Contact Section */}
       <section className="Contact" id="contact">
-        <h2>Redo för renare fönster?</h2>
-        <p>Hör av dig till mig för tidsbokning eller prisförfrågan.</p>
+        <h2>Kontakta mig för tidsbokning eller frågor!</h2>
         
         <div className="Contact-info">
           <p>
