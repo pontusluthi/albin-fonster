@@ -54,11 +54,11 @@ function App() {
       {/* Hero Section */}
       <header className="Hero">
         <img src={logo} alt="Albins Fönsterputs Logo" className="Brand-logo-big" />
-        <h1>Albins Fönsterputs</h1>
+        <h1>Hej!</h1>
         <p>
-          Hej! Jag heter Albin, är 23 år och driver Albins Fönsterputs. 
+          Jag heter Albin, är 24 år och driver Albins Fönsterputs. 
           Jag erbjuder professionell, noggrann och personlig fönsterputsning 
-          för privatpersoner och företag i Tullinge med omnejd.
+          för privatpersoner och företag i Stockholmsområdet & Söderort.
         </p>
         <a href="#calculator" className="Button">Prisberäkning</a>
       </header>
@@ -127,7 +127,7 @@ function App() {
           </p>
           <p>
             <span>📍 Omfattning:</span> 
-            <span>Tullinge & Södra Stockholm</span>
+            <span>Stockholmsområdet & Söderort</span>
           </p>
         </div>
       </section>
