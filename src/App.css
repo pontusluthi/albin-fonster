@@ -32,6 +32,7 @@ html {
   text-decoration: none;
   display: inline-block;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .Boka-btn:hover {
@@ -104,7 +105,7 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
-  height: 600px
+  height: 100%;
 }
 
 .Hero h1 {
